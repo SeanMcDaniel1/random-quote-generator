@@ -9,6 +9,7 @@ project 1 - A Random Quote Generator
 
 /***
  * `quotes` array
+ * quotesArray variable that contains multiple objects
  ***/
 
 const quotesArray = [
@@ -44,7 +45,11 @@ const quotesArray = [
 
 /***
  * `getRandomQuote` function
+ * Accepts the quotesArray variable as a parameter
+ * Creates a random number that's max value is equal to the length of the quotesArray
+ * returns the random quote that is generated and saved as a variable named randomQuote
  ***/
+
 const getRandomQuote = (arr) => {
 	const r = Math.floor(Math.random() * quotesArray.length);
 	const randomQuote = arr[r];
@@ -53,10 +58,14 @@ const getRandomQuote = (arr) => {
 
 /***
  * `printQuote` function
+ * quote variable created by invoking the getRandomQuote() function and accepts the quotesArray as a parameter
+ * if statements to check if quote variable has a citation property, year property, or both properties.
+ * After the conditional tests, the quote is printed from the DOM to the HTML file
  ***/
+
 const printQuote = () => {
 	const quote = getRandomQuote(quotesArray);
-	//print the quote and source
+	//PRINTS IF - Quote has a citation AND year property
 	if (quote.hasOwnProperty('citation') && quote.hasOwnProperty('year')) {
 		document.querySelector('.quote-box').innerHTML = `
       <p class="quote">${quote.text}</p>
@@ -65,6 +74,7 @@ const printQuote = () => {
       <span class="year">${quote.year}</span>
       </p>
     `;
+		//PRINTS IF - Quote has a citation property
 	} else if (quote.hasOwnProperty('citation')) {
 		document.querySelector('.quote-box').innerHTML = `
       <p class="quote">${quote.text}</p>
@@ -72,6 +82,7 @@ const printQuote = () => {
       <span class="year">${quote.citation}</span>
       </p>
     `;
+		//PRINTS IF - Quote has a year property
 	} else if (quote.hasOwnProperty('year')) {
 		document.querySelector('.quote-box').innerHTML = `
       <p class="quote">${quote.text}</p>
@@ -79,16 +90,18 @@ const printQuote = () => {
       <span class="year">${quote.year}</span>
       </p>
     `;
+		//PRINTS IF - Quote does NOT have a citation or year property
 	} else {
 		document.querySelector('.quote-box').innerHTML = `
       <p class="quote">${quote.text}</p>
       <p class="source">${quote.source}</p>
     `;
 	}
-	//write conditional statement if the obj contains a citation OR year USE .inclueds() arr method
 };
 
+//Invokes the printQuote() function
 printQuote();
+
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
