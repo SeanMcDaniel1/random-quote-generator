@@ -56,6 +56,12 @@ const quotesArray = [
 		source: 'Woody Allen',
 		citation: 'ForbesQuotes',
 	},
+	{
+		text:
+			'Your time is limited, so don’t waste it living someone else’s life. ',
+		source: 'Steve Jobs',
+		citation: 'Apple',
+	},
 ];
 
 /***
@@ -119,8 +125,10 @@ const printQuote = () => {
 	}
 };
 
-const changeBgColor = (event) => {
-	document.body.style.backgroundColor = 'red';
+const changeBgColor = () => {
+	const rColor = () => Math.floor(Math.random() * 256);
+	let color = `rgb( ${rColor()}, ${rColor()}, ${rColor()} )`;
+	document.body.style.backgroundColor = `${color}`;
 };
 document.querySelector('.load-quote').addEventListener('click', changeBgColor);
 
