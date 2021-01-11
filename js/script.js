@@ -11,34 +11,34 @@ project 1 - A Random Quote Generator
  * `quotes` array
  ***/
 
-const quotes = [
+const quotesArray = [
 	{
-		quote: 'You miss 100 percent of the shots you never take.',
-		source: ' - Wayne Gretzy',
+		text: 'You miss 100 percent of the shots you never take.',
+		source: 'Wayne Gretzy',
 	},
 	{
-		quote: 'Hard work beats talent when talent fails to work hard.',
-		source: ' - Kevin Durant',
+		text: 'Hard work beats talent when talent fails to work hard.',
+		source: 'Kevin Durant',
 	},
 	{
-		quote: 'Carpe Diem',
-		source: '- Marvin Williams',
+		text: 'Carpe Diem',
+		source: 'Marvin Williams',
 		citation: 'Dead Poets Society',
 		year: 1989,
 	},
 	{
-		quote:
+		text:
 			'Knowing Is Not Enough; We Must Apply. Wishing Is Not Enough; We Must Do.',
-		source: ' - Johann Wolfgang Von Goethe',
+		source: 'Johann Wolfgang Von Goethe',
 		citation: 'Book',
 	},
 	{
-		quote: 'Creativity Is Intelligence Having Fun',
-		source: ' – Don Zimmer',
+		text: 'Creativity Is Intelligence Having Fun',
+		source: 'Don Zimmer',
 	},
 	{
-		quote: 'Reading Is To The Mind, As Exercise Is To The Body.',
-		source: ' - Brian Tracy',
+		text: 'Reading Is To The Mind, As Exercise Is To The Body.',
+		source: 'Brian Tracy',
 	},
 ];
 
@@ -46,7 +46,7 @@ const quotes = [
  * `getRandomQuote` function
  ***/
 const getRandomQuote = (arr) => {
-	const r = Math.floor(Math.random() * quotes.length);
+	const r = Math.floor(Math.random() * quotesArray.length);
 	const randomQuote = arr[r];
 	return randomQuote;
 };
@@ -55,8 +55,37 @@ const getRandomQuote = (arr) => {
  * `printQuote` function
  ***/
 const printQuote = () => {
-	const q = getRandomQuote(quotes);
-	console.log(q);
+	const quote = getRandomQuote(quotesArray);
+	//print the quote and source
+	if (quote.hasOwnProperty('citation') && quote.hasOwnProperty('year')) {
+		document.querySelector('.quote-box').innerHTML = `
+      <p class="quote">${quote.text}</p>
+      <p class="source">${quote.source}
+      <span class="citation">${quote.citation}</span>
+      <span class="year">${quote.year}</span>
+      </p>
+    `;
+	} else if (quote.hasOwnProperty('citation')) {
+		document.querySelector('.quote-box').innerHTML = `
+      <p class="quote">${quote.text}</p>
+      <p class="source">${quote.source}
+      <span class="year">${quote.citation}</span>
+      </p>
+    `;
+	} else if (quote.hasOwnProperty('year')) {
+		document.querySelector('.quote-box').innerHTML = `
+      <p class="quote">${quote.text}</p>
+      <p class="source">${quote.source}
+      <span class="year">${quote.year}</span>
+      </p>
+    `;
+	} else {
+		document.querySelector('.quote-box').innerHTML = `
+      <p class="quote">${quote.text}</p>
+      <p class="source">${quote.source}</p>
+    `;
+	}
+	//write conditional statement if the obj contains a citation OR year USE .inclueds() arr method
 };
 
 printQuote();
