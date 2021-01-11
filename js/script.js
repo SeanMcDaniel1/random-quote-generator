@@ -8,14 +8,17 @@ project 1 - A Random Quote Generator
 // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /***
+ * ********************************************************************
  * `quotes` array
  * quotesArray variable that contains multiple objects
+ * ********************************************************************
  ***/
 
 const quotesArray = [
 	{
 		text: 'You miss 100 percent of the shots you never take.',
 		source: 'Wayne Gretzy',
+		citation: 'ForbesQuotes',
 	},
 	{
 		text: 'Hard work beats talent when talent fails to work hard.',
@@ -41,13 +44,27 @@ const quotesArray = [
 		text: 'Reading Is To The Mind, As Exercise Is To The Body.',
 		source: 'Brian Tracy',
 	},
+	{
+		text:
+			"I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.",
+		source: 'Michael Jordan',
+		citation: 'ForbesQuotes',
+		year: 1995,
+	},
+	{
+		text: 'Eighty percent of success is showing up.',
+		source: 'Woody Allen',
+		citation: 'ForbesQuotes',
+	},
 ];
 
 /***
+ * ********************************************************************
  * `getRandomQuote` function
  * Accepts the quotesArray variable as a parameter
  * Creates a random number that's max value is equal to the length of the quotesArray
  * returns the random quote that is generated and saved as a variable named randomQuote
+ * ********************************************************************
  ***/
 
 const getRandomQuote = (arr) => {
@@ -57,10 +74,13 @@ const getRandomQuote = (arr) => {
 };
 
 /***
+ * ********************************************************************
+ *
  * `printQuote` function
  * quote variable created by invoking the getRandomQuote() function and accepts the quotesArray as a parameter
  * if statements to check if quote variable has a citation property, year property, or both properties.
  * After the conditional tests, the quote is printed from the DOM to the HTML file
+ * * ********************************************************************
  ***/
 
 const printQuote = () => {
