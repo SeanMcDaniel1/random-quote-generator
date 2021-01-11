@@ -125,12 +125,15 @@ const printQuote = () => {
 	}
 };
 
+/***
+ * EXTRA CREDIT: Function that changes the background color when the button is clicked
+ ***/
+
 const changeBgColor = () => {
 	const rColor = () => Math.floor(Math.random() * 256);
 	let color = `rgb( ${rColor()}, ${rColor()}, ${rColor()} )`;
 	document.body.style.backgroundColor = `${color}`;
 };
-document.querySelector('.load-quote').addEventListener('click', changeBgColor);
 
 //Invokes the printQuote() function
 printQuote();
@@ -142,4 +145,6 @@ printQuote();
 
 document
 	.getElementById('load-quote')
+	//CHANGE BG COLOR: EXTRA CREDIT
+	.addEventListener('click', changeBgColor)
 	.addEventListener('click', printQuote, false);
