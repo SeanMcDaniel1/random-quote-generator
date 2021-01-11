@@ -45,11 +45,21 @@ const quotes = [
 /***
  * `getRandomQuote` function
  ***/
+const getRandomQuote = (arr) => {
+	const r = Math.floor(Math.random() * quotes.length);
+	const randomQuote = arr[r];
+	return randomQuote;
+};
 
 /***
  * `printQuote` function
  ***/
+const printQuote = () => {
+	const q = getRandomQuote(quotes);
+	console.log(q);
+};
 
+printQuote();
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
