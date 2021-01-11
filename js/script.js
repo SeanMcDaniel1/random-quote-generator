@@ -119,6 +119,11 @@ const printQuote = () => {
 	}
 };
 
+const changeBgColor = (event) => {
+	document.body.style.backgroundColor = 'red';
+};
+document.querySelector('.load-quote').addEventListener('click', changeBgColor);
+
 //Invokes the printQuote() function
 printQuote();
 
