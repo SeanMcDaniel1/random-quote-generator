@@ -10,54 +10,54 @@ project 1 - A Random Quote Generator
 /***
  * ********************************************************************
  * `quotes` array
- * quotesArray variable that contains multiple objects
+ * quotes variable that contains multiple objects
  * ********************************************************************
  ***/
 
-const quotesArray = [
+const quotes = [
 	{
-		text: 'You miss 100 percent of the shots you never take.',
+		quote: 'You miss 100 percent of the shots you never take.',
 		source: 'Wayne Gretzy',
 		citation: 'ForbesQuotes',
 	},
 	{
-		text: 'Hard work beats talent when talent fails to work hard.',
+		quote: 'Hard work beats talent when talent fails to work hard.',
 		source: 'Kevin Durant',
 	},
 	{
-		text: 'Carpe Diem',
+		quote: 'Carpe Diem',
 		source: 'Marvin Williams',
 		citation: 'Dead Poets Society',
 		year: 1989,
 	},
 	{
-		text:
+		quote:
 			'Knowing Is Not Enough; We Must Apply. Wishing Is Not Enough; We Must Do.',
 		source: 'Johann Wolfgang Von Goethe',
 		citation: 'Book',
 	},
 	{
-		text: 'Creativity Is Intelligence Having Fun',
+		quote: 'Creativity Is Intelligence Having Fun',
 		source: 'Don Zimmer',
 	},
 	{
-		text: 'Reading Is To The Mind, As Exercise Is To The Body.',
+		quote: 'Reading Is To The Mind, As Exercise Is To The Body.',
 		source: 'Brian Tracy',
 	},
 	{
-		text:
+		quote:
 			"I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.",
 		source: 'Michael Jordan',
 		citation: 'ForbesQuotes',
 		year: 1995,
 	},
 	{
-		text: 'Eighty percent of success is showing up.',
+		quote: 'Eighty percent of success is showing up.',
 		source: 'Woody Allen',
 		citation: 'ForbesQuotes',
 	},
 	{
-		text:
+		quote:
 			'Your time is limited, so don’t waste it living someone else’s life. ',
 		source: 'Steve Jobs',
 		citation: 'Apple',
@@ -67,14 +67,14 @@ const quotesArray = [
 /***
  * ********************************************************************
  * `getRandomQuote` function
- * Accepts the quotesArray variable as a parameter
- * Creates a random number that's max value is equal to the length of the quotesArray
+ * Accepts the quotes variable as a parameter
+ * Creates a random number that's max value is equal to the length of the quotes
  * returns the random quote that is generated and saved as a variable named randomQuote
  * ********************************************************************
  ***/
 
 const getRandomQuote = (arr) => {
-	const r = Math.floor(Math.random() * quotesArray.length);
+	const r = Math.floor(Math.random() * quotes.length);
 	const randomQuote = arr[r];
 	return randomQuote;
 };
@@ -83,18 +83,18 @@ const getRandomQuote = (arr) => {
  * ********************************************************************
  *
  * `printQuote` function
- * quote variable created by invoking the getRandomQuote() function and accepts the quotesArray as a parameter
+ * quote variable created by invoking the getRandomQuote() function and accepts the quotes as a parameter
  * if statements to check if quote variable has a citation property, year property, or both properties.
  * After the conditional tests, the quote is printed from the DOM to the HTML file
  * * ********************************************************************
  ***/
 
 const printQuote = () => {
-	const quote = getRandomQuote(quotesArray);
+	const quote = getRandomQuote(quotes);
 	//PRINTS IF - Quote has a citation AND year property
 	if (quote.hasOwnProperty('citation') && quote.hasOwnProperty('year')) {
 		document.querySelector('.quote-box').innerHTML = `
-      <p class="quote">${quote.text}</p>
+      <p class="quote">${quote.quote}</p>
       <p class="source">${quote.source}
       <span class="citation">${quote.citation}</span>
       <span class="year">${quote.year}</span>
@@ -103,7 +103,7 @@ const printQuote = () => {
 		//PRINTS IF - Quote has a citation property
 	} else if (quote.hasOwnProperty('citation')) {
 		document.querySelector('.quote-box').innerHTML = `
-      <p class="quote">${quote.text}</p>
+      <p class="quote">${quote.quote}</p>
       <p class="source">${quote.source}
       <span class="year">${quote.citation}</span>
       </p>
@@ -111,7 +111,7 @@ const printQuote = () => {
 		//PRINTS IF - Quote has a year property
 	} else if (quote.hasOwnProperty('year')) {
 		document.querySelector('.quote-box').innerHTML = `
-      <p class="quote">${quote.text}</p>
+      <p class="quote">${quote.quote}</p>
       <p class="source">${quote.source}
       <span class="year">${quote.year}</span>
       </p>
@@ -119,7 +119,7 @@ const printQuote = () => {
 		//PRINTS IF - Quote does NOT have a citation or year property
 	} else {
 		document.querySelector('.quote-box').innerHTML = `
-      <p class="quote">${quote.text}</p>
+      <p class="quote">${quote.quote}</p>
       <p class="source">${quote.source}</p>
     `;
 	}
